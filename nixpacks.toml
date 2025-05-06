@@ -1,28 +1,20 @@
 [phases.setup]
-nixPkgs = ['go', 'nodejs']
+nixPkgs = ['go', 'nodejs', 'yarn', 'gcc']
 
 [phases.install]
 cmds = [
-  # Backend dependencies
-  'cd backend && go mod download',
-  # Frontend dependencies
-  'cd frontend && npm install'
+  'cd frontend && npm install',
+  'cd backend && go mod download'
 ]
 
 [phases.build]
 cmds = [
-  # Build Go backend
-  'cd backend && go build -o ../app',
-  # Build React frontend
-  'cd frontend && npm run build'
+  'cd frontend && npm run build',
+  'cd backend && go build -o app main.go'
 ]
 
 [start]
-cmd = './app'
+cmd = 'cd backend && ./app'
 
-[env]
-PORT = '8080'
-
-# Serve static files from the frontend build directory
-[nixpacks]
-plan_path = './nixpacks.plan.json' 
+[variables]
+STATIC_DIR = '/app/frontend/dist'
