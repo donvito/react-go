@@ -17,4 +17,4 @@ cmds = [
 cmd = 'cd backend && ./app'
 
 [variables]
-STATIC_DIR = 'frontend/dist'
+STATIC_DIR = '/frontend/dist'
