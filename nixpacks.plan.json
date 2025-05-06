@@ -1,0 +1,11 @@
+{
+  "providers": [
+    "go",
+    "node"
+  ],
+  "buildImage": "nixos/nix:latest",
+  "variables": {
+    "CI": "true",
+    "PORT": "8080"
+  }
+} 
